@@ -1,0 +1,146 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Dancing Script", "Pinyon Script", cursive;
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Dark hero area stays charcoal in light mode too */
+  --background: oklch(0.23 0.005 80);
+  --foreground: oklch(0.98 0.005 80);
+
+  --surface: oklch(0.97 0.015 80);
+  --surface-foreground: oklch(0.20 0.01 80);
+
+  --card: oklch(0.99 0.008 80);
+  --card-foreground: oklch(0.20 0.01 80);
+
+  --panel: oklch(0.28 0.006 80);
+  --panel-foreground: oklch(0.98 0.005 80);
+
+  --popover: oklch(0.99 0.008 80);
+  --popover-foreground: oklch(0.20 0.01 80);
+
+  --primary: oklch(0.70 0.16 45);
+  --primary-foreground: oklch(0.99 0.005 80);
+
+  --secondary: oklch(0.32 0.008 80);
+  --secondary-foreground: oklch(0.98 0.005 80);
+
+  --muted: oklch(0.35 0.006 80);
+  --muted-foreground: oklch(0.72 0.01 80);
+
+  --accent: oklch(0.70 0.16 45);
+  --accent-foreground: oklch(0.99 0.005 80);
+
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 80);
+
+  --border: oklch(0.45 0.008 80 / 30%);
+  --input: oklch(0.45 0.008 80 / 30%);
+  --ring: oklch(0.70 0.16 45);
+
+  --gradient-hero: linear-gradient(180deg, oklch(0.23 0.005 80) 0%, oklch(0.21 0.005 80) 100%);
+  --shadow-card: 0 10px 30px -12px oklch(0 0 0 / 0.25);
+  --shadow-glow: 0 8px 24px -8px oklch(0.70 0.16 45 / 0.45);
+}
+
+.dark {
+  /* In dark mode the whole app goes deep charcoal */
+  --background: oklch(0.14 0.005 80);
+  --foreground: oklch(0.98 0.005 80);
+
+  --surface: oklch(0.16 0.006 80);
+  --surface-foreground: oklch(0.96 0.005 80);
+
+  --card: oklch(0.22 0.008 80);
+  --card-foreground: oklch(0.97 0.005 80);
+
+  --panel: oklch(0.20 0.006 80);
+  --panel-foreground: oklch(0.98 0.005 80);
+
+  --popover: oklch(0.20 0.008 80);
+  --popover-foreground: oklch(0.97 0.005 80);
+
+  --primary: oklch(0.74 0.17 45);
+  --primary-foreground: oklch(0.14 0.005 80);
+
+  --secondary: oklch(0.26 0.008 80);
+  --secondary-foreground: oklch(0.97 0.005 80);
+
+  --muted: oklch(0.26 0.006 80);
+  --muted-foreground: oklch(0.70 0.01 80);
+
+  --accent: oklch(0.74 0.17 45);
+  --accent-foreground: oklch(0.14 0.005 80);
+
+  --border: oklch(0.98 0.005 80 / 12%);
+  --input: oklch(0.98 0.005 80 / 14%);
+  --ring: oklch(0.74 0.17 45);
+
+  --shadow-card: 0 10px 30px -12px oklch(0 0 0 / 0.6);
+  --shadow-glow: 0 8px 24px -6px oklch(0.74 0.17 45 / 0.5);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body, #app { height: 100%; }
+  body {
+    background: var(--surface);
+    color: var(--surface-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer utilities {
+  .glass-chip {
+    background: oklch(0.20 0.005 80 / 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid oklch(1 0 0 / 0.12);
+  }
+  .font-script { font-family: var(--font-script); }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+}
